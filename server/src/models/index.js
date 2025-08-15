@@ -22,7 +22,7 @@ const User = sequelize.define('User', {
   }
 });
 
-// instance method to compare passwords
+// Instance method
 User.prototype.comparePassword = function (candidate) {
   return bcrypt.compare(candidate, this.password);
 };
@@ -38,7 +38,7 @@ const Post = sequelize.define('Post', {
   timestamps: true
 });
 
-// associations
+// Associations
 User.hasMany(Post, { foreignKey: 'authorId', as: 'posts' });
 Post.belongsTo(User, { foreignKey: 'authorId', as: 'author' });
 
